@@ -40,18 +40,17 @@ serenade.global().command("zoom out", async (api, matches) => {
 serenade.global().command("foe", (api) => {
   api.typeText("of");
 });
-serenade.global().command(
-  "workspace <%number%>",
-  async (api, matches) => {
-    let num = getWorkspace(matches.number);
-    console.log(num);
-    await api.pressKey(num, ["win"]);
-  },
-  { autoExecute: true }
-);
+
 serenade.global().command("control <%number%>", async (api, matches) => {
   await api.pressKey(matches.number, ["control"]);
 });
 serenade.global().command("shift control <%number%>", async (api, matches) => {
   await api.pressKey(matches.number, ["control", "shift"]);
 });
+serenade.global().command(
+  "input <%text%>",
+  async (api, matches) => {
+    await api.typeText(matches.text);
+  },
+  { autoExecute: true }
+);

@@ -48,3 +48,12 @@ function getWorkspace(match) {
   }
   return match;
 }
+serenade.global().command(
+  "workspace <%number%>",
+  async (api, matches) => {
+    let num = getWorkspace(matches.number);
+    console.log(num);
+    await api.pressKey(num, ["win"]);
+  },
+  { autoExecute: true }
+);
